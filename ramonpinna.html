@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ramón Pinna — Economista, conferenciante y presidente de Achalay</title>
+  <meta name="description" content="Llevo 25 años creyendo que las personas son lo más importante, dentro y fuera de la empresa. Economista, padre y presidente de Achalay.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/phosphor-icons"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:       #0F233A;
+      --azul-hover: #173759;
+      --fondo:      #FAF8F4;
+      --fondo-alt:  #F3EEE7;
+      --arena:      #C79A63;
+      --texto:      #222222;
+      --texto-sec:  #5F5F5F;
+      --linea:      #E5DED5;
+      --blanco:     #FFFFFF;
+      --max:        1320px;
+      --cont:       1180px;
+      --sombra:     0 20px 50px rgba(0,0,0,.06);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--fondo); color: var(--texto); font-size: 16px; line-height: 1.6; }
+
+    /* ── TIPOGRAFÍA ── */
+    .t-display { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.1; }
+    .t-serif   { font-family: 'Cormorant Garamond', serif; font-weight: 500; }
+    .label     { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--arena); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 80px; }
+    .section   { padding: 120px 0; }
+    .section-alt { background: var(--fondo-alt); }
+
+    /* ── BOTONES ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 1px; text-decoration: none; border-radius: 4px;
+      height: 48px; padding: 0 36px; transition: all .2s ease; cursor: pointer;
+      text-transform: uppercase;
+    }
+    .btn-primary { background: var(--azul); color: var(--blanco); border: 1px solid var(--azul); }
+    .btn-primary:hover { background: var(--azul-hover); border-color: var(--azul-hover); }
+    .btn-secondary { background: transparent; color: var(--azul); border: 1px solid var(--azul); }
+    .btn-secondary:hover { background: var(--azul); color: var(--blanco); }
+    .btn-arena { background: var(--arena); color: var(--azul); border: 1px solid var(--arena); }
+    .btn-arena:hover { background: #b8895a; border-color: #b8895a; }
+    .btn-solid-arena { background: var(--arena) !important; color: var(--azul) !important; border: 1px solid var(--arena) !important; transition: all .2s ease; }
+    .btn-solid-arena:hover { background: #b8895a !important; border-color: #b8895a !important; }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,248,244,0); backdrop-filter: blur(0px);
+      transition: all .3s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(250,248,244,0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--linea);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 80px;
+      height: 80px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif; font-weight: 600;
+      font-size: 20px; color: var(--azul); text-decoration: none;
+      letter-spacing: 2px; text-transform: uppercase;
+    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+      color: var(--azul); text-decoration: none; opacity: .7; transition: opacity .2s;
+    }
+    .nav-links a:hover { opacity: 1; }
+    .nav-links a.active { opacity: 1; border-bottom: 1.5px solid var(--arena); padding-bottom: 2px; }
+    .nav-cta { margin-left: 12px; }
+    #menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--azul); }
+
+    /* ── HERO ── */
+    #hero {
+      height: 100vh;
+      background: var(--fondo);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-inner {
+      max-width: var(--max); margin: 0 auto;
+      padding: 0 80px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .hero-text {
+      width: 55%;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 160px 60px 120px 0;
+    }
+    .hero-label { margin-bottom: 24px; }
+    .hero-title {
+      font-size: clamp(36px, 3.8vw, 60px);
+      color: var(--azul); margin-bottom: 28px; line-height: 1.08;
+    }
+    .hero-title em { font-style: normal; color: var(--azul); font-weight: 500; }
+    .hero-sub {
+      font-size: 15px; color: var(--texto-sec); line-height: 1.7;
+      margin-bottom: 44px; max-width: 420px;
+    }
+    .hero-btns {
+      display: flex; gap: 12px; flex-wrap: nowrap; align-items: center;
+    }
+    .hero-btns .btn {
+      white-space: nowrap; font-size: 13px; padding: 0 20px;
+    }
+    .hero-foto {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 45%;
+      background: var(--fondo);
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-img-wrap {
+      width: 100%; height: 100%;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+      will-change: transform;
+    }
+
+    /* ── ROLES (4 columnas) ── */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .role-card {
+      padding: 52px 40px;
+      position: relative;
+      background: var(--blanco);
+      transition: background .2s;
+    }
+    .role-card:hover { background: var(--fondo); }
+    /* Separador vertical que no ocupa todo el alto */
+    .role-card:not(:last-child)::after {
+      content: '';
+      position: absolute; right: 0; top: 28px; bottom: 28px;
+      width: 1px; background: var(--linea);
+    }
+    .role-icon { color: var(--azul); margin-bottom: 24px; opacity: .65; }
+    .role-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--azul); margin-bottom: 12px; line-height: 1.25; }
+    .role-desc { font-size: 14px; color: var(--texto-sec); line-height: 1.7; }
+
+    /* ── SOBRE MÍ ── */
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 45fr 55fr;
+      gap: 80px; align-items: center;
+    }
+    .sobre-content { display: flex; flex-direction: column; }
+    .sobre-titulo { font-size: clamp(36px, 3.8vw, 52px); color: var(--azul); margin: 16px 0 28px; line-height: 1.12; }
+    .sobre-texto { font-size: 15px; color: var(--texto-sec); line-height: 1.8; margin-bottom: 16px; }
+    .sobre-texto strong { color: var(--texto); font-weight: 500; }
+    .sobre-texto:last-of-type { margin-bottom: 36px; }
+
+    /* Credenciales en fila */
+    .sobre-creds {
+      display: flex; align-items: flex-start; gap: 0;
+      padding-top: 32px;
+      border-top: 1px solid var(--linea);
+    }
+    .sobre-cred-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--texto-sec); line-height: 1.5;
+      flex: 1;
+    }
+    .sobre-cred-item strong { color: var(--azul); font-weight: 600; display: block; }
+    .sobre-cred-sep {
+      width: 1px; background: var(--linea);
+      align-self: stretch; margin: 0 28px;
+      flex-shrink: 0;
+    }
+
+    /* Foto */
+    .sobre-foto { position: relative; }
+    .sobre-foto-inner {
+      position: relative;
+      border-radius: 4px 4px 0 0; overflow: hidden;
+      box-shadow: none;
+    }
+    /* Línea decorativa arena a la izquierda */
+    .sobre-foto-inner::before {
+      content: '';
+      position: absolute; left: -16px; top: 32px; bottom: 32px;
+      width: 2px; background: var(--arena);
+      opacity: .5; border-radius: 2px;
+      z-index: 1;
+    }
+    .sobre-foto-inner img {
+      width: 100%; display: block;
+      object-fit: cover;
+    }
+
+    /* Credenciales azul debajo de la foto */
+    .sobre-creds-azul {
+      display: flex; align-items: center;
+      background: var(--azul); border-radius: 0 0 4px 4px;
+      padding: 24px 28px;
+      box-shadow: var(--sombra);
+    }
+    .sobre-cred-azul-item {
+      display: flex; align-items: center; gap: 12px;
+      flex: 1;
+    }
+    .sobre-cred-azul-item svg { color: var(--arena); flex-shrink: 0; }
+    .sobre-cred-azul-label { font-size: 11px; color: #ffffff; letter-spacing: .5px; margin-bottom: 2px; }
+    .sobre-cred-azul-valor { font-size: 13px; font-weight: 600; color: var(--blanco); }
+    .sobre-cred-azul-sep { width: 1px; background: rgba(255,255,255,.15); align-self: stretch; margin: 0 20px; flex-shrink: 0; }
+
+    /* ── SERVICIOS ── */
+    .servicios-header { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 64px; }
+    .servicios-titulo { font-size: clamp(36px, 4vw, 52px); color: var(--azul); margin: 16px 0 0; line-height: 1.15; }
+    .servicios-desc { font-size: 15px; color: var(--texto-sec); line-height: 1.8; }
+    .servicios-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 64px; }
+    .servicio-card {
+      background: var(--blanco); border: 1px solid var(--linea);
+      border-radius: 4px; padding: 36px 28px;
+      box-shadow: var(--sombra); transition: transform .2s, box-shadow .2s;
+    }
+    .servicio-card:hover { transform: translateY(-4px); box-shadow: 0 32px 64px rgba(0,0,0,.09); }
+    .servicio-icon { color: var(--arena); margin-bottom: 20px; }
+    .servicio-titulo { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--azul); margin-bottom: 10px; }
+    .servicio-desc { font-size: 13px; color: var(--texto-sec); line-height: 1.7; }
+
+    /* ── LOGOS CLIENTES ── */
+    .logos-wrap {
+      border-top: 1px solid var(--linea);
+      padding: 56px 0 0;
+      margin-top: 72px;
+    }
+    .logos-label { text-align: center; margin-bottom: 40px; }
+    .logos-grid {
+      display: flex; align-items: center;
+      justify-content: center;
+      gap: 0;
+    }
+    .logo-empresa {
+      opacity: .45; transition: opacity .25s ease;
+      padding: 0 32px; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      flex: 1;
+    }
+    .logo-empresa:not(:last-child)::after {
+      content: '';
+      position: absolute; right: 0; top: 15%; bottom: 15%;
+      width: 1px; background: var(--linea);
+    }
+    .logo-empresa:hover { opacity: 1; }
+    .logo-empresa img {
+      max-height: 32px; max-width: 120px;
+      width: auto; height: auto; display: block;
+      filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(800%) hue-rotate(180deg) brightness(90%) contrast(105%);
+    }
+
+    /* ── ARTÍCULOS ── */
+    .articulos-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
+    .articulos-titulo { font-size: clamp(32px, 3.5vw, 46px); color: var(--azul); margin-top: 12px; line-height: 1.2; }
+    .articulos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .articulo-card { display: flex; flex-direction: column; text-decoration: none; }
+    .articulo-img {
+      aspect-ratio: 3/2; border-radius: 4px; overflow: hidden;
+      margin-bottom: 20px; background: var(--fondo-alt);
+    }
+    .articulo-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+    .articulo-card:hover .articulo-img img { transform: scale(1.03); }
+    .articulo-cat { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--arena); margin-bottom: 8px; }
+    .articulo-titulo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--azul); line-height: 1.25; margin-bottom: 10px; }
+    .articulo-desc { font-size: 14px; color: var(--texto-sec); line-height: 1.7; margin-bottom: 14px; }
+    .articulo-fecha { font-size: 12px; color: var(--texto-sec); opacity: .7; }
+
+    /* ── ACHALAY BLOCK ── */
+    .achalay-block {
+      background: var(--azul);
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 580px;
+    }
+    .achalay-content {
+      padding: 100px 80px 100px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .achalay-label { color: var(--arena); margin-bottom: 20px; }
+    .achalay-titulo { font-size: clamp(32px, 3.5vw, 48px); color: var(--blanco); margin-bottom: 20px; line-height: 1.15; }
+    .achalay-desc { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.8; margin-bottom: 36px; }
+    .achalay-items {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 28px; margin-bottom: 40px;
+    }
+    .achalay-item { display: flex; flex-direction: column; gap: 10px; }
+    .achalay-item-icon { color: var(--arena); }
+    .achalay-item-txt { font-size: 13px; color: rgba(255,255,255,.8); line-height: 1.6; }
+    .achalay-foto { position: relative; overflow: hidden; }
+    .achalay-foto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* ── MEDIOS ── */
+    .medios-titulo { font-size: clamp(32px, 3.5vw, 46px); color: var(--azul); margin: 12px 0 48px; line-height: 1.2; }
+    .medios-logos {
+      display: flex; align-items: center;
+      justify-content: center;
+      margin-bottom: 48px;
+      padding: 40px 0;
+      border-top: 1px solid var(--linea);
+      border-bottom: 1px solid var(--linea);
+    }
+    .medios-logos .logo-empresa { flex: 1; }
+    .medios-logos .logo-empresa img { max-height: 36px; }
+
+    /* ── CONTACTO ── */
+    .contacto-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+    .contacto-titulo { font-size: clamp(36px, 4vw, 52px); color: var(--azul); margin: 12px 0 20px; line-height: 1.15; }
+    .contacto-desc { font-size: 15px; color: var(--texto-sec); line-height: 1.8; margin-bottom: 40px; }
+    .contacto-info { display: flex; flex-direction: column; gap: 16px; }
+    .contacto-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--texto-sec); text-decoration: none; }
+    .contacto-item:hover { color: var(--azul); }
+    .contacto-item ph-icon { color: var(--arena); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid.full { grid-template-columns: 1fr; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field label { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--texto-sec); }
+    .form-field input, .form-field textarea, .form-field select {
+      font-family: 'Inter', sans-serif; font-size: 15px; color: var(--texto);
+      background: var(--blanco); border: 1px solid var(--linea); border-radius: 4px;
+      padding: 14px 18px; outline: none; transition: border-color .2s;
+      resize: none;
+    }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+      border-color: var(--azul);
+    }
+    .form-field textarea { min-height: 120px; }
+    .form-wrap { background: var(--blanco); border: 1px solid var(--linea); border-radius: 4px; padding: 48px; box-shadow: var(--sombra); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-submit { margin-top: 8px; width: 100%; justify-content: center; height: 52px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--azul); padding: 60px 0 40px;
+    }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 80px;
+    }
+    .footer-top { display: grid; grid-template-columns: 1.2fr 1.4fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); align-items: start; }
+    .footer-brand { }
+    .footer-achalay { display: flex; flex-direction: column; gap: 16px; }
+    .footer-achalay-logo { height: 48px; width: auto; opacity: .85; }
+    .footer-achalay-txt { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; color: var(--blanco); margin-bottom: 14px; display: block; text-decoration: none; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.7; max-width: 260px; }
+    .footer-nav { display: flex; gap: 60px; }
+    .footer-nav-col h4 { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--arena); margin-bottom: 16px; }
+    .footer-nav-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-nav-col ul a { font-size: 14px; color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .footer-nav-col ul a:hover { color: var(--blanco); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.4); }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 13px; color: rgba(255,255,255,.4); text-decoration: none; transition: color .2s; }
+    .footer-legal a:hover { color: rgba(255,255,255,.8); }
+
+    /* ── ANIMACIONES ── */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in.delay-1 { transition-delay: .1s; }
+    .fade-in.delay-2 { transition-delay: .2s; }
+    .fade-in.delay-3 { transition-delay: .32s; }
+    .fade-in.delay-4 { transition-delay: .46s; }
+
+    /* ── MOBILE MENU ── */
+    #mobile-menu { display: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; padding: 0 40px; }
+      .hero-text { padding: 140px 0 60px; }
+      .hero-foto { height: 60vw; }
+      .sobre-grid, .contacto-grid { grid-template-columns: 1fr; gap: 48px; }
+      .servicios-header { grid-template-columns: 1fr; gap: 20px; }
+      .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+      .roles-grid { grid-template-columns: repeat(2, 1fr); }
+      .achalay-block { grid-template-columns: 1fr; }
+      .achalay-foto { display: none; }
+      .sobre-credenciales { position: static; margin-top: 24px; }
+      .footer-top { flex-direction: column; gap: 40px; }
+      .footer-nav { gap: 40px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      #menu-btn { display: block; }
+      #mobile-menu {
+        display: none; position: fixed; top: 80px; left: 0; right: 0; bottom: 0;
+        background: var(--fondo); z-index: 99; padding: 40px;
+        flex-direction: column; gap: 32px;
+      }
+      #mobile-menu.open { display: flex; }
+      #mobile-menu a { font-size: 24px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--azul); text-decoration: none; }
+      .hero-inner { padding: 0 24px; grid-template-columns: 1fr; }
+      .hero-text { padding: 120px 0 48px; }
+      .hero-foto { display: none; }
+      .hero-btns { flex-wrap: wrap; }
+      .hero-btns .btn { font-size: 12px; padding: 0 16px; }
+      .servicios-grid { grid-template-columns: 1fr; }
+      .articulos-grid { grid-template-columns: 1fr; }
+      .roles-grid { grid-template-columns: 1fr; }
+      .achalay-content { padding: 48px 32px; }
+      .achalay-items { grid-template-columns: 1fr; }
+      .medios-logos { justify-content: center; }
+      .footer-nav { flex-direction: column; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      section.section { padding: 80px 0; }
+      .container { padding: 0 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Ramón Pinna</a>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Inicio</a></li>
+        <li><a href="#sobre">Sobre mí</a></li>
+        <li><a href="#conferencias">Conferencias</a></li>
+        <li><a href="#articulos">Artículos</a></li>
+        <li><a href="#achalay">Achalay</a></li>
+        <li><a href="#medios">Medios</a></li>
+      </ul>
+      <a href="#contacto" class="btn btn-primary nav-cta">Contacto</a>
+      <button id="menu-btn" aria-label="Menú">
+        <ph-icon name="list" size="26"></ph-icon>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu">
+    <a href="#">Inicio</a>
+    <a href="#sobre">Sobre mí</a>
+    <a href="#conferencias">Conferencias</a>
+    <a href="#articulos">Artículos</a>
+    <a href="#achalay">Achalay</a>
+    <a href="#medios">Medios</a>
+    <a href="#contacto" class="btn btn-primary" style="width:fit-content;">Contacto</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="label hero-label fade-in">Economista · Padre · Presidente de Achalay</p>
+        <h1 class="t-display hero-title fade-in delay-1">
+          Llevo 25 años creyendo que las personas son lo más importante, dentro y fuera de la empresa.
+        </h1>
+        <p class="hero-sub fade-in delay-2">Trabajo con empresas y organizaciones para construir entornos más humanos, diversos e inclusivos.</p>
+        <div class="hero-btns fade-in delay-3">
+          <a href="#achalay" class="btn btn-primary">Conoce Achalay →
+          </a>
+          <a href="#articulos" class="btn btn-secondary">Leer artículos →
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Foto fuera del hero-inner, sin padding lateral -->
+    <div class="hero-foto">
+      <div class="hero-img-wrap">
+        <img id="hero-img" src="https://ramonpinna.com/wp-content/uploads/2026/06/achalay_ramonpinnaprieto_fondotransparente_2.png" alt="Ramón Pinna">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ROLES ── -->
+  <section style="background: var(--blanco);">
+    <div style="max-width: var(--max); margin: 0 auto; padding: 0 80px;">
+      <div class="roles-grid fade-in">
+        <div class="role-card">
+          <div class="role-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/>
+            </svg>
+          </div>
+          <div class="role-title">Conferenciante<br>y formador</div>
+          <div class="role-desc">Experiencias que inspiran a empresas y equipos a liderar con propósito.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            </svg>
+          </div>
+          <div class="role-title">Consultor<br>empresarial</div>
+          <div class="role-desc">Más de 20 años acompañando a organizaciones en estrategia, impacto y transformación.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <div class="role-title">Presidente<br>de Achalay</div>
+          <div class="role-desc">25 años impulsando proyectos de inclusión y apoyo a personas con discapacidad y sus familias.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 8 22 2 16 2"/><line x1="22" y1="2" x2="15" y2="9"/><path d="M11 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/>
+            </svg>
+          </div>
+          <div class="role-title">Voz referente<br>en inclusión</div>
+          <div class="role-desc">Divulgador y colaborador habitual en medios de comunicación nacionales.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOBRE MÍ ── -->
+  <section id="sobre" class="section section-alt">
+    <div class="container">
+      <div class="sobre-grid fade-in">
+
+        <!-- Columna izquierda: texto -->
+        <div class="sobre-content">
+          <p class="label">Sobre mí</p>
+          <h2 class="t-display sobre-titulo">Una historia de vida, familia y compromiso.</h2>
+          <p class="sobre-texto">Soy economista, directivo y conferenciante. <strong>Padre, sobre todo, soy padre de Emilie, tiene síndrome de Down y esa experiencia cambió mi mirada para siempre.</strong></p>
+          <p class="sobre-texto">A lo largo de mi trayectoria he aprendido que el verdadero éxito se mide en impacto positivo. Por eso dedico mi tiempo a trabajar en tres frentes que se complementan: la empresa, la inclusión y la familia.</p>
+          <p class="sobre-texto">Estoy casado con María y somos padres de Alejandro, Alma y Emilie. Lo que más nos gusta hacer juntos es perdernos por la Sierra del Guadarrama.</p>
+          <a href="#sobre" class="btn btn-secondary" style="align-self: flex-start;">Conoce mi historia →
+          </a>
+        </div>
+
+        <!-- Columna derecha: foto -->
+        <div class="sobre-foto fade-in delay-2">
+          <div class="sobre-foto-inner">
+            <img src="https://ramonpinna.com/wp-content/uploads/2026/06/ramonpinna_bio_4.jpg" alt="Ramón Pinna">
+          </div>
+          <!-- Bloque azul debajo de la foto -->
+          <div class="sobre-creds-azul fade-in">
+            <div class="sobre-cred-azul-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              </svg>
+              <div>
+                <div class="sobre-cred-azul-label">Consultor en</div>
+                <div class="sobre-cred-azul-valor">Sumaintermutual</div>
+              </div>
+            </div>
+            <div class="sobre-cred-azul-sep"></div>
+            <div class="sobre-cred-azul-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              <div>
+                <div class="sobre-cred-azul-label">Vocal de</div>
+                <div class="sobre-cred-azul-valor">Plena Inclusión Madrid</div>
+              </div>
+            </div>
+            <div class="sobre-cred-azul-sep"></div>
+            <div class="sobre-cred-azul-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              </svg>
+              <div>
+                <div class="sobre-cred-azul-label">Autor de</div>
+                <div class="sobre-cred-azul-valor" style="color:var(--arena);">Respira, papá</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="conferencias" class="section">
+    <div class="container">
+      <div class="servicios-header fade-in">
+        <div>
+          <p class="label">Conferencias y servicios</p>
+          <h2 class="t-display servicios-titulo">Ideas que inspiran. Experiencias que transforman.</h2>
+        </div>
+        <div>
+          <p class="servicios-desc">Trabajo con empresas, equipos directivos y organizaciones que creen en el liderazgo con propósito. Conferencias que emocionan y mueven a la acción, formación en inclusión y diversidad, asesoramiento estratégico en RSE e impacto social, y moderación de espacios de diálogo y reflexión.</p>
+        </div>
+      </div>
+
+      <div class="servicios-grid">
+        <div class="servicio-card fade-in">
+          <div class="servicio-icon"><ph-icon name="microphone" size="26"></ph-icon></div>
+          <div class="servicio-titulo">Conferencias inspiracionales</div>
+          <div class="servicio-desc">Historias reales que conectan con las personas y movilizan a los equipos.</div>
+        </div>
+        <div class="servicio-card fade-in delay-1">
+          <div class="servicio-icon"><ph-icon name="graduation-cap" size="26"></ph-icon></div>
+          <div class="servicio-titulo">Formación en inclusión y diversidad</div>
+          <div class="servicio-desc">Programas y talleres para construir organizaciones más inclusivas.</div>
+        </div>
+        <div class="servicio-card fade-in delay-2">
+          <div class="servicio-icon"><ph-icon name="chart-line-up" size="26"></ph-icon></div>
+          <div class="servicio-titulo">Asesoramiento estratégico</div>
+          <div class="servicio-desc">Acompaño a empresas y entidades en sus proyectos de impacto social y RSE.</div>
+        </div>
+        <div class="servicio-card fade-in delay-3">
+          <div class="servicio-icon"><ph-icon name="chat-circle-dots" size="26"></ph-icon></div>
+          <div class="servicio-titulo">Moderación y mesas redondas</div>
+          <div class="servicio-desc">Conversaciones que generan reflexión, diálogo y acción.</div>
+        </div>
+      </div>
+
+      <!-- Logos clientes -->
+      <div class="logos-wrap fade-in">
+        <p class="label logos-label">Han confiado en mí</p>
+        <div class="container">
+      <div class="logos-grid">
+          <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/banco-santander-logo.svg" alt="Santander"></div>
+          <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/McKinsey_and_Company_Logo_1.svg" alt="McKinsey & Company"></div>
+          <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/deloitte-1.svg" alt="Deloitte"></div>
+          <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/navigation-logo.svg" alt="Linklaters"></div>
+          <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/178853.svg" alt="Quirón Salud"></div>
+          <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/oracle-6.svg" alt="Oracle"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ARTÍCULOS ── -->
+  <section id="articulos" class="section section-alt">
+    <div class="container">
+      <div class="articulos-header fade-in">
+        <div>
+          <p class="label">Artículos recientes</p>
+          <h2 class="t-display articulos-titulo">Reflexiones sobre inclusión, empresa y vida.</h2>
+        </div>
+        <a href="#articulos" class="btn btn-secondary" style="white-space:nowrap;">Ver todos los artículos →</a>
+      </div>
+      <div class="articulos-grid">
+        <a href="https://www.abc.es/familia/padres-hijos/ramon-pinna-prieto-renglones-torcidos-vida-20251203102624-nt.html" target="_blank" class="articulo-card fade-in">
+          <div class="articulo-img">
+            <img src="https://ramonpinna.com/wp-content/uploads/2026/06/emilie-rp.webp" alt="Los renglones torcidos de la vida">
+          </div>
+          <div class="articulo-cat">ABC · Familia</div>
+          <div class="articulo-titulo">Los renglones torcidos de la vida</div>
+          <div class="articulo-desc">Ramón Pinna reflexiona sobre cómo los imprevistos de la vida se convierten en los momentos que más nos definen.</div>
+          <div class="articulo-fecha">03 DIC 2025</div>
+        </a>
+        <a href="https://www.abc.es/familia/padres-hijos/mirar-futuro-cierto-temor-sentir-abismo-20241203144857-nt.html" target="_blank" class="articulo-card fade-in delay-1">
+          <div class="articulo-img">
+            <img src="https://ramonpinna.com/wp-content/uploads/2026/06/rp_post_2025.webp" alt="No es lo mismo mirar al futuro con cierto temor">
+          </div>
+          <div class="articulo-cat">ABC · Familia</div>
+          <div class="articulo-titulo">«No es lo mismo mirar al futuro con cierto temor, que sentir el abismo del qué será de ti cuando yo no esté»</div>
+          <div class="articulo-desc">Una reflexión honesta sobre la incertidumbre, el miedo y la esperanza como padre y como persona.</div>
+          <div class="articulo-fecha">03 DIC 2024</div>
+        </a>
+        <a href="https://www.elmundo.es/ciencia-y-salud/salud/2022/12/03/638b45a621efa0a0588b45b2.html" target="_blank" class="articulo-card fade-in delay-2">
+          <div class="articulo-img">
+            <img src="https://ramonpinna.com/wp-content/uploads/2022/12/inclusion_alma.webp" alt="La inclusión: una cuestión de Alma">
+          </div>
+          <div class="articulo-cat">El Mundo · Salud</div>
+          <div class="articulo-titulo">La inclusión: una cuestión de "Alma"</div>
+          <div class="articulo-desc">Ramón Pinna en El Mundo sobre familia, inclusión y vida.</div>
+          <div class="articulo-fecha">03 DIC 2022</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACHALAY ── -->
+  <section id="achalay" class="section" style="background: var(--azul); padding: 0;">
+    <div class="achalay-block fade-in">
+      <div class="achalay-content">
+        <p class="label achalay-label">Asociación Achalay</p>
+        <h2 class="t-display achalay-titulo">Personas que merecen una oportunidad real.</h2>
+        <p class="achalay-desc">Achalay es parte de mi vida desde hace 25 años. A lo largo de los años ha ido creciendo convirtiéndose en un proyecto que hoy acompaña a personas en riesgo de exclusión social y a jóvenes con discapacidad intelectual. En quechua, Achalay significa algo maravilloso. Y eso es exactamente lo que son las personas con las que trabajamos.</p>
+        <div class="achalay-items">
+          <div class="achalay-item">
+            <div class="achalay-item-icon">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="achalay-item-txt">Apoyo a familias en riesgo de exclusión social.</div>
+          </div>
+          <div class="achalay-item">
+            <div class="achalay-item-icon">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="achalay-item-txt">Formación inclusiva para jóvenes con discapacidad intelectual.</div>
+          </div>
+          <div class="achalay-item">
+            <div class="achalay-item-icon">
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="achalay-item-txt">Acompañamiento cercano, escucha y empatía.</div>
+          </div>
+          <div class="achalay-item">
+            <div class="achalay-item-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M19.414 14.414C21 12.828 22 11.5 22 9.5a5.5 5.5 0 0 0-9.591-3.676.6.6 0 0 1-.818.001A5.5 5.5 0 0 0 2 9.5c0 2.3 1.5 4 3 5.5l5.535 5.362a2 2 0 0 0 2.879.052 2.12 2.12 0 0 0-.004-3 2.124 2.124 0 1 0 3-3 2.124 2.124 0 0 0 3.004 0 2 2 0 0 0 0-2.828l-1.881-1.882a2.41 2.41 0 0 0-3.409 0l-1.71 1.71a2 2 0 0 1-2.828 0 2 2 0 0 1 0-2.828l2.823-2.762"/></svg>
+            </div>
+            <div class="achalay-item-txt">Alianzas que generan impacto real y sostenible.</div>
+          </div>
+        </div>
+        <a href="https://achalay.es" target="_blank" class="btn btn-solid-arena" style="align-self:flex-start;">Conoce Achalay →
+        </a>
+      </div>
+      <div class="achalay-foto">
+        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" alt="Achalay">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MEDIOS ── -->
+  <section id="medios" class="section section-alt">
+    <div class="container">
+      <p class="label fade-in">En los medios</p>
+      <h2 class="t-display medios-titulo fade-in delay-1">Presencia en medios nacionales.</h2>
+      <div class="medios-logos fade-in delay-2">
+        <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/iddRMSX7BA_logos.svg" alt="ABC"></div>
+        <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/idh3N_Ox7__1782665172000.svg" alt="El País"></div>
+        <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/idDLPEmLSq_1782665219798.svg" alt="El Mundo"></div>
+        <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/Logo.svg" alt="RNE"></div>
+        <div class="logo-empresa"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/logo-ceu-blanco.png" alt="CEU Talks" style="filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(800%) hue-rotate(180deg) brightness(90%) contrast(105%);"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACTO ── -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <div class="contacto-grid">
+        <div class="fade-in">
+          <p class="label">¿Hablamos?</p>
+          <h2 class="t-display contacto-titulo">Si quieres contar conmigo, estaré encantado de conversar contigo.</h2>
+          <p class="contacto-desc">Para una conferencia, entrevista o colaboración, escríbeme y te respondo personalmente.</p>
+          <div class="contacto-info">
+            <a href="mailto:hola@ramonpinna.com" class="contacto-item">
+              <ph-icon name="envelope" size="18" style="color:var(--arena)"></ph-icon>
+              hola@ramonpinna.com
+            </a>
+            <span class="contacto-item">
+              <ph-icon name="map-pin" size="18" style="color:var(--arena)"></ph-icon>
+              Madrid, España
+            </span>
+          </div>
+        </div>
+        <div class="form-wrap fade-in delay-2">
+          <div class="form-row">
+            <div class="form-field">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre">
+            </div>
+            <div class="form-field">
+              <label>Email</label>
+              <input type="email" placeholder="tu@email.com">
+            </div>
+          </div>
+          <div class="form-row full" style="margin-bottom:16px;">
+            <div class="form-field">
+              <label>Mensaje</label>
+              <textarea placeholder="Cuéntame en qué puedo ayudarte..."></textarea>
+            </div>
+          </div>
+          <button class="btn btn-primary form-submit">Enviar mensaje →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="footer-logo">RAMÓN PINNA</a>
+          <p class="footer-tagline">Economista, directivo y conferenciante. Presidente de Achalay y vocal de Plena Inclusión Madrid. Llevo 25 años trabajando en empresas y organizaciones que creen que las personas son lo más importante, dentro y fuera de la empresa.</p>
+        </div>
+
+        <!-- Columna Achalay -->
+        <div class="footer-achalay">
+          <a href="https://achalay.es" target="_blank" class="footer-logo" style="letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0;">Asociación Achalay</a>
+          <p class="footer-achalay-txt">Achalay es parte de mi vida desde hace 25 años. A lo largo de los años ha ido creciendo convirtiéndose en un proyecto que hoy acompaña a personas en riesgo de exclusión social y a jóvenes con discapacidad intelectual.</p>
+          <a href="https://achalay.es" target="_blank"
+             class="btn btn-solid-arena" style="font-size:12px; height:44px; padding: 0 20px; align-self:flex-start;">
+            Conoce Achalay →
+          </a>
+        </div>
+
+        <div class="footer-nav">
+          <div class="footer-nav-col">
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="#">Inicio</a></li>
+              <li><a href="#sobre">Sobre mí</a></li>
+              <li><a href="#conferencias">Conferencias</a></li>
+              <li><a href="#articulos">Artículos</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4>Más</h4>
+            <ul>
+              <li><a href="#achalay">Achalay</a></li>
+              <li><a href="#medios">Medios</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+              <li><a href="https://achalay.es" target="_blank">achalay.es</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Ramón Pinna. Todos los derechos reservados.</span>
+        <div class="footer-legal">
+          <a href="#">Aviso Legal</a>
+          <a href="#">Política de Privacidad</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+    // Fade-in scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => obs.observe(el));
+
+    // Parallax hero — la imagen sube ligeramente al hacer scroll
+    const heroImg = document.getElementById('hero-img');
+    window.addEventListener('scroll', () => {
+      if (window.innerWidth >= 768 && heroImg) {
+        const offset = window.scrollY * 0.25;
+        heroImg.style.transform = `translateY(${offset}px)`;
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
