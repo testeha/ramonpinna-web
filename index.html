@@ -411,31 +411,59 @@
     }
 
     @media (max-width: 768px) {
+      /* Nav */
+      .nav-inner { padding: 0 24px; height: 64px; }
       .nav-links, .nav-cta { display: none; }
-      #menu-btn { display: block; }
+      #menu-btn { display: flex; }
+
+      /* Mobile menu */
       #mobile-menu {
-        display: none; position: fixed; top: 80px; left: 0; right: 0; bottom: 0;
+        display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
         background: var(--fondo); z-index: 99; padding: 40px;
         flex-direction: column; gap: 32px;
       }
       #mobile-menu.open { display: flex; }
       #mobile-menu a { font-size: 24px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--azul); text-decoration: none; }
-      .hero-inner { padding: 0 24px; grid-template-columns: 1fr; }
-      .hero-text { padding: 120px 0 48px; }
-      .hero-foto { display: none; }
-      .hero-btns { flex-wrap: wrap; }
-      .hero-btns .btn { font-size: 12px; padding: 0 16px; }
+
+      /* Hero móvil: columna única con foto debajo */
+      #hero { height: auto; }
+      .hero-inner { padding: 0 24px; height: auto; }
+      .hero-text { width: 100%; padding: 100px 0 40px; }
+      .hero-title { font-size: clamp(32px, 8vw, 48px); }
+      .hero-sub { font-size: 15px; }
+      .hero-btns { flex-wrap: wrap; gap: 10px; }
+      .hero-btns .btn { font-size: 12px; padding: 0 16px; height: 42px; }
+
+      /* Foto: visible en móvil, debajo del texto */
+      .hero-foto {
+        position: relative;
+        width: 100%;
+        height: 60vw;
+        right: auto; top: auto; bottom: auto;
+      }
+
+      /* Secciones */
+      .sobre-grid, .contacto-grid { grid-template-columns: 1fr; gap: 40px; }
       .servicios-grid { grid-template-columns: 1fr; }
       .articulos-grid { grid-template-columns: 1fr; }
       .roles-grid { grid-template-columns: 1fr; }
-      .achalay-content { padding: 48px 32px; }
+      .achalay-block { grid-template-columns: 1fr; }
+      .achalay-content { padding: 48px 24px; }
       .achalay-items { grid-template-columns: 1fr; }
-      .medios-logos { justify-content: center; }
+      .medios-logos { flex-wrap: wrap; justify-content: center; gap: 16px; padding: 24px; }
+      .medios-logos .logo-empresa { flex: 0 0 40%; }
+      .footer-top { grid-template-columns: 1fr !important; gap: 40px; }
       .footer-nav { flex-direction: column; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
-      section.section { padding: 80px 0; }
+      section.section { padding: 60px 0; }
       .container { padding: 0 24px; }
       .form-row { grid-template-columns: 1fr; }
+      .logos-grid { flex-wrap: wrap; justify-content: center; }
+      .logo-empresa { flex: 0 0 40%; padding: 12px; }
+      .logo-empresa:not(:last-child)::after { display: none; }
+      .servicios-header { grid-template-columns: 1fr; }
+      .sobre-creds-azul { flex-direction: column; gap: 20px; padding: 24px; }
+      .sobre-cred-azul-sep { width: 100%; height: 1px; margin: 0; }
     }
   </style>
 </head>
