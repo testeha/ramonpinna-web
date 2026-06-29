@@ -129,7 +129,7 @@
       width: 45%;
       background: var(--fondo);
       overflow: hidden;
-      padding-top: 80px;
+      padding-top: 5px;
     }
     .hero-img-wrap {
       width: 100%; height: 100%;
@@ -149,7 +149,7 @@
       grid-template-columns: repeat(4, 1fr);
     }
     .role-card {
-      padding: 52px 40px;
+      padding: 40px 20px;
       position: relative;
       background: var(--blanco);
       transition: background .2s;
@@ -162,8 +162,8 @@
       width: 1px; background: var(--linea);
     }
     .role-icon { color: var(--azul); margin-bottom: 24px; opacity: .65; }
-    .role-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--azul); margin-bottom: 12px; line-height: 1.25; }
-    .role-desc { font-size: 14px; color: var(--texto-sec); line-height: 1.7; }
+    .role-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--azul); margin-bottom: 12px; line-height: 1.3; }
+    .role-desc { font-size: 14px; color: var(--texto-sec); line-height: 1.3; }
 
     /* ── SOBRE MÍ ── */
     .sobre-grid {
@@ -238,13 +238,13 @@
     .servicios-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 64px; }
     .servicio-card {
       background: var(--blanco); border: 1px solid var(--linea);
-      border-radius: 4px; padding: 36px 28px;
+      border-radius: 4px; padding: 20px 20px;
       box-shadow: var(--sombra); transition: transform .2s, box-shadow .2s;
     }
     .servicio-card:hover { transform: translateY(-4px); box-shadow: 0 32px 64px rgba(0,0,0,.09); }
     .servicio-icon { color: var(--arena); margin-bottom: 20px; }
-    .servicio-titulo { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--azul); margin-bottom: 10px; }
-    .servicio-desc { font-size: 13px; color: var(--texto-sec); line-height: 1.7; }
+    .servicio-titulo { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--azul); margin-bottom: 10px; line-height: 1.3; }
+    .servicio-desc { font-size: 13px; color: var(--texto-sec); line-height: 1.3; }
 
     /* ── LOGOS CLIENTES ── */
     .logos-wrap {
@@ -462,8 +462,8 @@
       .achalay-content { padding: 48px 24px; }
       .achalay-items { grid-template-columns: repeat(2, 1fr); gap: 20px; }
       .logos-wrap { margin-top: 32px; }
-      .logos-grid { flex-wrap: wrap; justify-content: center; }
-      .logo-empresa { flex: 0 0 40%; padding: 12px; }
+      .logos-grid { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .logo-empresa { flex: 0 0 40%; padding: 20px 12px; }
       .logo-empresa:not(:last-child)::after { display: none; }
       .medios-logos { flex-wrap: wrap; justify-content: center; gap: 16px; padding: 24px; }
       .medios-logos .logo-empresa { flex: 0 0 40%; }
@@ -895,8 +895,17 @@
     // Mobile menu
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+    const burgerIcon = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+    const closeIcon = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+    
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.innerHTML = isOpen ? closeIcon : burgerIcon;
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuBtn.innerHTML = burgerIcon;
+    }));
 
     // Fade-in scroll
     const fadeEls = document.querySelectorAll('.fade-in');
