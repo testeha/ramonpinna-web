@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medios — Ramón Pinna</title>
+  <meta name="description" content="Apariciones de Ramón Pinna en medios de comunicación nacionales: ABC, El País, El Mundo, COPE, RNE, Telemadrid y más.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --azul: #0F233A; --azul-hover: #173759;
+      --fondo: #FAF8F4; --fondo-alt: #F3EEE7;
+      --arena: #C79A63; --texto: #222222; --texto-sec: #5F5F5F;
+      --linea: #E5DED5; --blanco: #FFFFFF;
+      --max: 1320px; --sombra: 0 20px 50px rgba(0,0,0,.06);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--fondo); color: var(--texto); font-size: 16px; line-height: 1.6; }
+    .t-display { font-family: 'Cormorant Garamond', serif; font-weight: 600; line-height: 1.1; }
+    .label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--arena); }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 80px; }
+    .section { padding: 120px 0; }
+
+    /* ── BOTONES ── */
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-decoration: none; border-radius: 4px; height: 48px; padding: 0 36px; transition: all .2s ease; cursor: pointer; text-transform: uppercase; }
+    .btn-primary { background: var(--azul); color: var(--blanco); border: 1px solid var(--azul); }
+    .btn-primary:hover { background: var(--azul-hover); }
+    .btn-secondary { background: transparent; color: var(--azul); border: 1px solid var(--azul); }
+    .btn-secondary:hover { background: var(--azul); color: var(--blanco); }
+    .btn-arena { background: var(--arena); color: var(--azul); border: 1px solid var(--arena); }
+    .btn-arena:hover { background: #b8895a; }
+
+    /* ── NAV ── */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,248,244,0.96); backdrop-filter: blur(12px); box-shadow: 0 1px 0 var(--linea); }
+    .nav-inner { max-width: var(--max); margin: 0 auto; padding: 0 80px; height: 80px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; color: var(--azul); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--azul); text-decoration: none; opacity: .7; transition: all .2s; }
+    .nav-links a:hover { opacity: 1; border-bottom: 1.5px solid var(--arena); padding-bottom: 2px; }
+    .nav-links a.active { opacity: 1; border-bottom: 1.5px solid var(--arena); padding-bottom: 2px; }
+    #menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--azul); padding: 8px; }
+    #mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; bottom: 0; background: var(--fondo); z-index: 99; padding: 40px; flex-direction: column; gap: 32px; }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a { font-size: 24px; font-family: 'Cormorant Garamond', serif; font-weight: 600; color: var(--azul); text-decoration: none; }
+
+    /* ── PAGE HEADER ── */
+    .page-header { padding: 160px 0 80px; background: var(--fondo); border-bottom: 1px solid var(--linea); }
+    .page-header-inner { max-width: var(--max); margin: 0 auto; padding: 0 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+    .page-header h1 { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(48px, 5vw, 72px); color: var(--azul); line-height: 1.05; margin-top: 16px; }
+    .page-header-desc { font-size: 17px; color: var(--texto-sec); line-height: 1.8; }
+
+    /* ── LOGOS MEDIOS ── */
+    .logos-medios { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; padding: 56px 0; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+    .logo-medio { flex: 0 0 16.66%; display: flex; align-items: center; justify-content: center; padding: 24px 20px; position: relative; }
+    .logo-medio img { max-height: 36px; max-width: 120px; filter: brightness(0) saturate(100%) invert(10%) sepia(40%) saturate(800%) hue-rotate(180deg) brightness(90%) contrast(105%); opacity: .4; transition: opacity .25s; }
+    .logo-medio img:hover { opacity: .85; }
+    .logo-medio:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 20%; bottom: 20%; width: 1px; background: var(--linea); }
+
+    /* ── APARICIONES GRID ── */
+    .apariciones-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .aparicion-card { background: var(--blanco); border: 1px solid var(--linea); border-radius: 4px; padding: 32px 28px; box-shadow: var(--sombra); display: flex; flex-direction: column; gap: 12px; transition: transform .2s, box-shadow .2s; text-decoration: none; }
+    .aparicion-card:hover { transform: translateY(-4px); box-shadow: 0 32px 64px rgba(0,0,0,.09); }
+    .aparicion-tipo { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--arena); }
+    .aparicion-medio { font-size: 12px; font-weight: 600; color: var(--texto-sec); opacity: .7; }
+    .aparicion-titulo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--azul); line-height: 1.3; flex: 1; }
+    .aparicion-fecha { font-size: 12px; color: var(--texto-sec); opacity: .6; }
+    .aparicion-link { font-size: 13px; font-weight: 600; color: var(--arena); display: inline-flex; align-items: center; gap: 4px; }
+
+    /* ── PODCAST ── */
+    .podcast-card { background: var(--azul); border-radius: 4px; padding: 48px; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; box-shadow: var(--sombra); text-decoration: none; transition: background .2s; }
+    .podcast-card:hover { background: var(--azul-hover); }
+    .podcast-icon { width: 80px; height: 80px; background: rgba(255,255,255,.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .podcast-titulo { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--blanco); line-height: 1.2; margin-bottom: 8px; }
+    .podcast-desc { font-size: 14px; color: rgba(255,255,255,.6); line-height: 1.7; }
+    .podcast-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--arena); margin-bottom: 12px; display: block; }
+
+    /* ── RADIO ── */
+    .radio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .radio-item { background: var(--blanco); border: 1px solid var(--linea); border-radius: 4px; padding: 28px 32px; display: flex; align-items: center; gap: 20px; box-shadow: var(--sombra); }
+    .radio-icon { color: var(--arena); flex-shrink: 0; }
+    .radio-medio { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--texto-sec); margin-bottom: 4px; }
+    .radio-titulo { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--azul); line-height: 1.3; }
+
+    /* ── CTA ── */
+    .cta-contacto { background: var(--fondo-alt); border-radius: 4px; padding: 64px; display: flex; align-items: center; justify-content: space-between; gap: 48px; border: 1px solid var(--linea); }
+    .cta-contacto h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--azul); line-height: 1.2; margin-bottom: 12px; }
+    .cta-contacto p { font-size: 15px; color: var(--texto-sec); line-height: 1.7; max-width: 520px; }
+
+    /* ── FADE IN ── */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in.delay-1 { transition-delay: .1s; }
+    .fade-in.delay-2 { transition-delay: .25s; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--azul); padding: 60px 0 40px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 80px; }
+    .footer-top { display: grid; grid-template-columns: 1.2fr 1.4fr 1fr; gap: 60px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.1); align-items: start; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; color: var(--blanco); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 14px; }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.7; }
+    .footer-linkedin { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--arena); text-decoration: none; margin-top: 16px; transition: opacity .2s; }
+    .footer-linkedin:hover { opacity: .7; }
+    .footer-achalay { display: flex; flex-direction: column; gap: 16px; }
+    .footer-achalay-txt { font-size: 13px; color: rgba(255,255,255,.55); line-height: 1.7; }
+    .footer-nav { display: flex; gap: 48px; }
+    .footer-nav-col h4 { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--arena); margin-bottom: 16px; }
+    .footer-nav-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-nav-col ul a { font-size: 14px; color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .footer-nav-col ul a:hover { color: var(--blanco); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 32px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.4); }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 13px; color: rgba(255,255,255,.4); text-decoration: none; }
+    .footer-legal a:hover { color: rgba(255,255,255,.8); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .page-header-inner { grid-template-columns: 1fr; gap: 40px; }
+      .apariciones-grid { grid-template-columns: repeat(2, 1fr); }
+      .logo-medio { flex: 0 0 33.33%; }
+      .radio-grid { grid-template-columns: 1fr; }
+      .cta-contacto { flex-direction: column; gap: 32px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-nav { gap: 32px; }
+      .podcast-card { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-inner > .btn { display: none; }
+      #menu-btn { display: block; }
+      .container { padding: 0 24px; }
+      .page-header-inner { padding: 0 24px; }
+      .footer-inner { padding: 0 24px; }
+      .section { padding: 72px 0; }
+      .page-header { padding: 120px 0 56px; }
+      .apariciones-grid { grid-template-columns: 1fr; }
+      .logo-medio { flex: 0 0 50%; }
+      .logo-medio::after { display: none !important; }
+      .cta-contacto { padding: 40px 24px; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-nav { flex-direction: column; gap: 24px; }
+      .footer-legal { flex-wrap: wrap; justify-content: center; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Ramón Pinna</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre-mi.html">Sobre mí</a></li>
+        <li><a href="conferencias.html">Conferencias</a></li>
+        <li><a href="articulos.html">Artículos</a></li>
+        <li><a href="achalay.html">Achalay</a></li>
+        <li><a href="medios.html" class="active">Medios</a></li>
+      </ul>
+      <a href="conferencias.html#contacto" class="btn btn-primary">Contacto →</a>
+      <button id="menu-btn" aria-label="Menú">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu">
+    <a href="index.html">Inicio</a>
+    <a href="sobre-mi.html">Sobre mí</a>
+    <a href="conferencias.html">Conferencias</a>
+    <a href="articulos.html">Artículos</a>
+    <a href="achalay.html">Achalay</a>
+    <a href="medios.html">Medios</a>
+    <a href="conferencias.html#contacto" class="btn btn-primary" style="width:fit-content;">Contacto →</a>
+  </div>
+
+  <!-- ── PAGE HEADER ── -->
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="fade-in">
+        <p class="label">Presencia en medios</p>
+        <h1>Apariciones en medios nacionales.</h1>
+      </div>
+      <p class="page-header-desc fade-in delay-1">Ramón Pinna ha colaborado con los principales medios de comunicación españoles hablando de inclusión, discapacidad, empresa y familia. Aquí recogemos las principales apariciones.</p>
+    </div>
+  </header>
+
+  <!-- ── LOGOS MEDIOS ── -->
+  <section style="padding: 0; background: var(--fondo);">
+    <div class="container">
+      <div class="logos-medios fade-in">
+        <div class="logo-medio"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/iddRMSX7BA_logos.svg" alt="ABC"></div>
+        <div class="logo-medio"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/idh3N_Ox7__1782665172000.svg" alt="El País"></div>
+        <div class="logo-medio"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/idDLPEmLSq_1782665219798.svg" alt="El Mundo"></div>
+        <div class="logo-medio"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/Logo.svg" alt="RNE"></div>
+        <div class="logo-medio"><img src="https://ramonpinna.com/wp-content/uploads/2026/06/logo-ceu-blanco.png" alt="CEU"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRENSA ESCRITA ── -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <p class="label">Prensa escrita</p>
+        <h2 class="t-display" style="font-size: clamp(32px, 3.5vw, 48px); color: var(--azul); margin-top: 12px; line-height: 1.1;">ABC, El País y El Mundo</h2>
+      </div>
+      <div class="apariciones-grid">
+
+        <a href="https://www.abc.es/familia/padres-hijos/ramon-pinna-prieto-renglones-torcidos-vida-20251203102624-nt.html" target="_blank" class="aparicion-card fade-in">
+          <span class="aparicion-tipo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Artículo
+          </span>
+          <span class="aparicion-medio">ABC · Familia</span>
+          <div class="aparicion-titulo">Los renglones torcidos de la vida</div>
+          <span class="aparicion-fecha">03 DIC 2025</span>
+          <span class="aparicion-link">Leer artículo →</span>
+        </a>
+
+        <a href="https://www.abc.es/familia/padres-hijos/mirar-futuro-cierto-temor-sentir-abismo-20241203144857-nt.html" target="_blank" class="aparicion-card fade-in delay-1">
+          <span class="aparicion-tipo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Artículo
+          </span>
+          <span class="aparicion-medio">ABC · Familia</span>
+          <div class="aparicion-titulo">«No es lo mismo mirar al futuro con cierto temor, que sentir el abismo del qué será de ti cuando yo no esté»</div>
+          <span class="aparicion-fecha">03 DIC 2024</span>
+          <span class="aparicion-link">Leer artículo →</span>
+        </a>
+
+        <a href="https://www.elmundo.es/ciencia-y-salud/salud/2022/12/03/638b45a621efa0a0588b45b2.html" target="_blank" class="aparicion-card fade-in delay-2">
+          <span class="aparicion-tipo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Artículo
+          </span>
+          <span class="aparicion-medio">El Mundo · Salud</span>
+          <div class="aparicion-titulo">La inclusión: una cuestión de «Alma»</div>
+          <span class="aparicion-fecha">03 DIC 2022</span>
+          <span class="aparicion-link">Leer artículo →</span>
+        </a>
+
+        <a href="https://elpais.com/elpais/2020/03/18/mamas_papas/1584531982_999095.html" target="_blank" class="aparicion-card fade-in">
+          <span class="aparicion-tipo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Artículo
+          </span>
+          <span class="aparicion-medio">El País · Mamás y Papás</span>
+          <div class="aparicion-titulo">La pastilla roja del síndrome de Down</div>
+          <span class="aparicion-fecha">21 MAR 2020</span>
+          <span class="aparicion-link">Leer artículo →</span>
+        </a>
+
+        <a href="https://elpais.com/elpais/2019/12/02/mamas_papas/1575286685_951771.html" target="_blank" class="aparicion-card fade-in delay-1">
+          <span class="aparicion-tipo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Artículo
+          </span>
+          <span class="aparicion-medio">El País · Mamás y Papás</span>
+          <div class="aparicion-titulo">Si pudiera, hoy mismo, le quitaría la discapacidad a mi hija</div>
+          <span class="aparicion-fecha">03 DIC 2019</span>
+          <span class="aparicion-link">Leer artículo →</span>
+        </a>
+
+        <a href="https://www.abc.es/familia/padres-hijos/abci-carta-viral-padre-nina-sindrome-down-arcadi-espada-201902191627_noticia.html" target="_blank" class="aparicion-card fade-in delay-2">
+          <span class="aparicion-tipo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Artículo viral
+          </span>
+          <span class="aparicion-medio">ABC · Familia</span>
+          <div class="aparicion-titulo">«¿Cuánto tengo que pagar por la vida de mi hija?» La carta viral a Arcadi Espada</div>
+          <span class="aparicion-fecha">21 FEB 2019</span>
+          <span class="aparicion-link">Leer artículo →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RADIO Y TV ── -->
+  <section style="background: var(--fondo-alt); padding: 100px 0;">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <p class="label">Radio y televisión</p>
+        <h2 class="t-display" style="font-size: clamp(32px, 3.5vw, 48px); color: var(--azul); margin-top: 12px; line-height: 1.1;">COPE, RNE, Telemadrid y más.</h2>
+      </div>
+      <div class="radio-grid fade-in">
+        <div class="radio-item">
+          <div class="radio-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </div>
+          <div>
+            <div class="radio-medio">COPE · La Linterna</div>
+            <div class="radio-titulo">Ángel Expósito y el saludo de Emilie en el Día del Síndrome de Down</div>
+          </div>
+        </div>
+        <div class="radio-item">
+          <div class="radio-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </div>
+          <div>
+            <div class="radio-medio">COPE · La Tarde</div>
+            <div class="radio-titulo">Fernando de Haro abre el programa con la historia de «Respira, papá»</div>
+          </div>
+        </div>
+        <div class="radio-item">
+          <div class="radio-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </div>
+          <div>
+            <div class="radio-medio">TreceTV · Trece Al Día</div>
+            <div class="radio-titulo">Su experiencia como enfermo de COVID y cómo esa realidad le llevó a escribir el libro</div>
+          </div>
+        </div>
+        <div class="radio-item">
+          <div class="radio-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </div>
+          <div>
+            <div class="radio-medio">Telemadrid</div>
+            <div class="radio-titulo">Aparición en Telemadrid hablando de inclusión y discapacidad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PODCAST ── -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in" style="margin-bottom: 48px;">
+        <p class="label">Podcast</p>
+        <h2 class="t-display" style="font-size: clamp(32px, 3.5vw, 48px); color: var(--azul); margin-top: 12px; line-height: 1.1;">Juntos Cambiamos el Mundo</h2>
+      </div>
+      <a href="https://open.spotify.com/episode/5d0G4DkbFNlqv4DtCDwIWN" target="_blank" class="podcast-card fade-in">
+        <div class="podcast-icon">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(199,154,99,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="rgba(199,154,99,0.9)" stroke="none"/></svg>
+        </div>
+        <div>
+          <span class="podcast-label">Escuchar en Spotify</span>
+          <div class="podcast-titulo">Juntos Cambiamos el Mundo — Episodio con Ramón Pinna</div>
+          <p class="podcast-desc">Ramón Pinna habla en el podcast sobre empresa, inclusión, Achalay y por qué cree que cambiando el mundo que está a tu alcance, mejoras el mundo de todos.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section style="background: var(--fondo-alt); padding: 80px 0;">
+    <div class="container">
+      <div class="cta-contacto fade-in">
+        <div>
+          <p class="label">¿Quieres contar con Ramón?</p>
+          <h3>Para entrevistas, colaboraciones o apariciones en medios.</h3>
+          <p>Si eres periodista, presentador o productor y quieres contar con Ramón para un programa, artículo o podcast, escríbele directamente.</p>
+        </div>
+        <a href="conferencias.html#contacto" class="btn btn-primary" style="white-space:nowrap; flex-shrink:0;">Contactar →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <a href="index.html" class="footer-logo">Ramón Pinna</a>
+          <p class="footer-tagline">Economista, directivo y conferenciante. Presidente de Achalay y vocal de Plena Inclusión Madrid.</p>
+          <a href="https://es.linkedin.com/in/ram%C3%B3npinnaprieto" target="_blank" class="footer-linkedin">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            Sígueme en LinkedIn
+          </a>
+        </div>
+        <div class="footer-achalay">
+          <a href="achalay.html" class="footer-logo" style="margin-bottom:0;">Asociación Achalay</a>
+          <p class="footer-achalay-txt">Achalay es parte de mi vida desde hace 25 años. Un proyecto que acompaña a personas en riesgo de exclusión social y a jóvenes con discapacidad intelectual.</p>
+          <a href="https://achalay.es" target="_blank" class="btn btn-arena" style="align-self:flex-start; font-size:12px; height:44px; padding:0 20px;">Conoce Achalay →</a>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-nav-col">
+            <h4>Navegación</h4>
+            <ul>
+              <li><a href="index.html">Inicio</a></li>
+              <li><a href="sobre-mi.html">Sobre mí</a></li>
+              <li><a href="conferencias.html">Conferencias</a></li>
+              <li><a href="articulos.html">Artículos</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4>Más</h4>
+            <ul>
+              <li><a href="achalay.html">Achalay</a></li>
+              <li><a href="medios.html">Medios</a></li>
+              <li><a href="conferencias.html#contacto">Contacto</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2026 Ramón Pinna. Todos los derechos reservados.</span>
+        <div class="footer-legal">
+          <a href="#">Aviso Legal</a>
+          <a href="#">Política de Privacidad</a>
+          <a href="#">Política de Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const burgerIcon = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+    const closeIcon = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.innerHTML = isOpen ? closeIcon : burgerIcon;
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuBtn.innerHTML = burgerIcon;
+    }));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
