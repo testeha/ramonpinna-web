@@ -58,7 +58,7 @@
       font-size: 14px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
       color: #0F3D2E; text-decoration: none; transition: color .2s;
     }
-    .nav-links a:hover, .nav-links a.active { color: #0F7A39; }
+    .nav-links a:hover { border-bottom: 1.5px solid var(--arena); padding-bottom: 2px; color: var(--azul); opacity: .7; }
     .nav-links a.active { border-bottom: 1.5px solid var(--arena); padding-bottom: 2px; }
     #menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--azul); padding: 8px; }
     #mobile-menu {
@@ -89,6 +89,10 @@
     .bio-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 80px; align-items: start;
+    }
+    .bio-foto {
+      position: sticky;
+      top: 100px;
     }
     .bio-foto img {
       width: 100%; border-radius: 4px;
@@ -289,7 +293,10 @@
         </div>
       </div>
 
-      <!-- Credenciales -->
+      <!-- Credenciales Achalay -->
+      <div style="margin-top: 32px; margin-bottom: 16px;">
+        <p class="label">Achalay · Reconocimientos de la asociación</p>
+      </div>
       <div class="credenciales fade-in">
         <div class="cred-item">
           <div class="cred-icon">
@@ -316,7 +323,7 @@
           <div class="cred-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
           </div>
-          <span class="cred-label">Reconocimiento</span>
+          <span class="cred-label">Reconocimiento · Achalay</span>
           <span class="cred-valor">Premio Fundación Alares 2023</span>
         </div>
         <div class="cred-item">
@@ -330,7 +337,7 @@
           <div class="cred-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
           </div>
-          <span class="cred-label">Acreditado por</span>
+          <span class="cred-label">Acreditada · Achalay</span>
           <span class="cred-valor">Fundación Lealtad</span>
         </div>
       </div>
@@ -341,7 +348,9 @@
   <section style="background: var(--fondo-alt); padding: 120px 0;">
     <div class="container">
       <div class="libro-block fade-in">
-        <div class="libro-img">📖</div>
+        <div class="libro-img" style="padding:0; overflow:hidden;">
+          <img src="libro-respira-papa.webp" alt="Respira, papá" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
         <div class="libro-content">
           <p class="label" style="color: var(--arena);">El libro</p>
           <h2>Respira, papá</h2>
