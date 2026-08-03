@@ -99,6 +99,12 @@
     .logo-emp:hover span { opacity: .8; }
 
     /* ── TESTIMONIO PLACEHOLDER ── */
+    .testimonios-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .testimonios-grid { grid-template-columns: 1fr; }
+    }
     .testimonio-placeholder {
       background: var(--fondo-alt); border-radius: 4px; padding: 48px;
       border-left: 3px solid var(--arena); position: relative;
@@ -295,13 +301,18 @@
   <!-- ── TESTIMONIO PLACEHOLDER ── -->
   <section style="background: var(--fondo-alt); padding: 80px 0;">
     <div class="container">
-      <div style="display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;">
+      <div class="testimonios-grid">
         <div class="testimonio-placeholder fade-in">
           <p class="testimonio-nota">Testimonio pendiente</p>
           <p>"Testimonio de un responsable de empresa — organizador o asistente a una charla de Ramón."</p>
           <span class="autor">Nombre · Cargo · Empresa</span>
         </div>
         <div class="testimonio-placeholder fade-in delay-1">
+          <p class="testimonio-nota">Testimonio pendiente</p>
+          <p>"Testimonio de un responsable de empresa — organizador o asistente a una charla de Ramón."</p>
+          <span class="autor">Nombre · Cargo · Empresa</span>
+        </div>
+        <div class="testimonio-placeholder fade-in delay-2">
           <p class="testimonio-nota">Testimonio pendiente</p>
           <p>"Testimonio de un responsable de empresa — organizador o asistente a una charla de Ramón."</p>
           <span class="autor">Nombre · Cargo · Empresa</span>
