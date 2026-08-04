@@ -98,6 +98,24 @@
       width: 100%; border-radius: 4px;
       box-shadow: var(--sombra); display: block;
     }
+    /* Timeline */
+    .bio-bloque { position: relative; padding-left: 32px; margin-bottom: 56px; }
+    .bio-bloque:last-child { margin-bottom: 0; }
+    .bio-bloque::before {
+      content: '';
+      position: absolute; left: 0; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%; background: var(--arena);
+      border: 2px solid var(--blanco);
+      box-shadow: 0 0 0 2px var(--arena);
+      z-index: 1;
+    }
+    .bio-bloque::after {
+      content: '';
+      position: absolute; left: 4px; top: 20px; bottom: -36px;
+      width: 1px; background: var(--linea);
+    }
+    .bio-bloque:last-child::after { display: none; }
     .bio-bloque { margin-bottom: 56px; }
     .bio-bloque:last-child { margin-bottom: 0; }
     .bio-bloque h2 {
@@ -218,7 +236,7 @@
         <li><a href="achalay.html">Achalay</a></li>
         <li><a href="medios.html">Medios</a></li>
       </ul>
-      <a href="index.html#contacto" class="btn btn-primary">Contacto →</a>
+      <a href="contacto.html" class="btn btn-primary">Contacto →</a>
       <button id="menu-btn" aria-label="Menú">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
@@ -233,7 +251,7 @@
     <a href="articulos.html">Artículos</a>
     <a href="achalay.html">Achalay</a>
     <a href="medios.html">Medios</a>
-    <a href="index.html#contacto" class="btn btn-primary" style="width:fit-content;">Contacto →</a>
+    <a href="contacto.html" class="btn btn-primary" style="width:fit-content;">Contacto →</a>
   </div>
 
   <!-- ── PAGE HEADER ── -->
@@ -346,13 +364,13 @@
   </section>
 
   <!-- ── CTA ACHALAY ── -->
-  <section class="section">
+  <section style="background: var(--azul); padding: 120px 0;">
     <div class="container">
-      <div class="cta-achalay fade-in">
+      <div class="cta-achalay fade-in" style="background:transparent; border:none; padding:0;">
         <div>
-          <p class="label">Asociación Achalay</p>
-          <h3>Achalay es la parte de mi vida<br>que más me define.</h3>
-          <p>No porque sea presidente. Sino porque llevo 25 años viéndola crecer, fallando con ella, aprendiendo con ella y queriendo con ella.</p>
+          <p class="label" style="color:var(--arena);">Asociación Achalay</p>
+          <h3 style="color:var(--blanco);">Achalay es la parte de mi vida<br>que más me define.</h3>
+          <p style="color:rgba(255,255,255,.65);">No porque sea presidente. Sino porque llevo 25 años viéndola crecer, fallando con ella, aprendiendo con ella y queriendo con ella.</p>
         </div>
         <a href="achalay.html" class="btn btn-primary" style="white-space:nowrap; flex-shrink:0;">Conoce Achalay →</a>
       </div>
@@ -391,7 +409,7 @@
             <ul>
               <li><a href="achalay.html">Achalay</a></li>
               <li><a href="medios.html">Medios</a></li>
-              <li><a href="index.html#contacto">Contacto</a></li>
+              <li><a href="contacto.html">Contacto</a></li>
             </ul>
           </div>
         </div>
