@@ -99,23 +99,33 @@
       box-shadow: var(--sombra); display: block;
     }
     /* Timeline */
-    .bio-bloque { position: relative; padding-left: 32px; margin-bottom: 56px; }
+    .bio-timeline { position: relative; }
+    .bio-bloque { position: relative; padding-left: 36px; margin-bottom: 56px; }
     .bio-bloque:last-child { margin-bottom: 0; }
     .bio-bloque::before {
       content: '';
       position: absolute; left: 0; top: 6px;
-      width: 10px; height: 10px;
-      border-radius: 50%; background: var(--arena);
-      border: 2px solid var(--blanco);
-      box-shadow: 0 0 0 2px var(--arena);
-      z-index: 1;
+      width: 12px; height: 12px;
+      border-radius: 50%; background: var(--fondo-alt);
+      border: 2px solid var(--linea);
+      box-shadow: 0 0 0 3px var(--fondo-alt);
+      z-index: 2; transition: background .4s, border-color .4s, box-shadow .4s;
     }
-    .bio-bloque::after {
-      content: '';
-      position: absolute; left: 4px; top: 20px; bottom: -36px;
-      width: 1px; background: var(--linea);
+    .bio-bloque.visible::before {
+      background: var(--arena);
+      border-color: var(--arena);
+      box-shadow: 0 0 0 3px rgba(199,154,99,.2);
     }
-    .bio-bloque:last-child::after { display: none; }
+    .bio-linea {
+      position: absolute; left: 5px; top: 0; bottom: 0;
+      width: 2px; background: var(--linea); z-index: 1;
+    }
+    .bio-linea-progress {
+      position: absolute; left: 0; top: 0;
+      width: 100%; height: 0%;
+      background: var(--arena); transition: height .6s ease;
+    }
+    .bio-bloque:last-child .bio-linea { display: none; }
     .bio-bloque { margin-bottom: 56px; }
     .bio-bloque:last-child { margin-bottom: 0; }
     .bio-bloque h2 {
@@ -278,9 +288,10 @@
         </div>
 
         <!-- Bloques de texto -->
-        <div class="fade-in delay-1">
+        <div class="bio-timeline fade-in delay-1">
 
           <div class="bio-bloque">
+            <div class="bio-linea"><div class="bio-linea-progress"></div></div>
             <p class="label">La familia</p>
             <h2>El principio de todo</h2>
             <p>Estoy casado con María y somos padres de Alejandro, Alma y Emilie. Lo que más nos gusta hacer juntos es perdernos por la Sierra del Guadarrama. Eso, y cenar tarde cuando los niños ya están dormidos.</p>
@@ -288,6 +299,7 @@
           </div>
 
           <div class="bio-bloque">
+            <div class="bio-linea"><div class="bio-linea-progress"></div></div>
             <p class="label">El trabajo</p>
             <h2>Personas y organizaciones</h2>
             <p>Trabajo con los equipos directivos de seis mutuas —Umivale, MAZ, Egarsat, Mutua Montañesa, Mutua Navarra y Mutua Balear— que decidieron hace más de una década construir juntas algo más grande de lo que cada una podría construir sola. Se llaman Sumaintermutual, y yo las acompaño en ese camino.</p>
@@ -295,6 +307,7 @@
           </div>
 
           <div class="bio-bloque">
+            <div class="bio-linea"><div class="bio-linea-progress"></div></div>
             <p class="label">Achalay y la inclusión</p>
             <h2>Veinticinco años de compromiso</h2>
             <p>Con veintiocho años viajé a Sudamérica para conocer Las Misiones. Volví con la certeza de que había algo que podíamos hacer aquí, cerca de casa. Con un grupo de amigos fundamos Achalay —que en quechua significa <em>'algo maravilloso'</em>— y desde entonces trabajamos con niños, familias y jóvenes con discapacidad intelectual en Madrid.</p>
@@ -364,15 +377,17 @@
   </section>
 
   <!-- ── CTA ACHALAY ── -->
-  <section style="background: var(--azul); padding: 120px 0;">
+  <section class="section">
     <div class="container">
-      <div class="cta-achalay fade-in" style="background:transparent; border:none; padding:0;">
-        <div>
-          <p class="label" style="color:var(--arena);">Asociación Achalay</p>
-          <h3 style="color:var(--blanco);">Achalay es la parte de mi vida<br>que más me define.</h3>
-          <p style="color:rgba(255,255,255,.65);">No porque sea presidente. Sino porque llevo 25 años viéndola crecer, fallando con ella, aprendiendo con ella y queriendo con ella.</p>
+      <div class="cta-achalay fade-in">
+        <div class="cta-achalay-texto">
+          <p class="label">Asociación Achalay</p>
+          <h3>Achalay es la parte de mi vida<br>que más me define.</h3>
+          <p>No porque sea presidente. Sino porque llevo 25 años viéndola crecer, fallando con ella, aprendiendo con ella y queriendo con ella.</p>
         </div>
-        <a href="achalay.html" class="btn btn-primary" style="white-space:nowrap; flex-shrink:0;">Conoce Achalay →</a>
+        <div class="cta-achalay-btn">
+          <a href="achalay.html" class="btn btn-primary">Conoce Achalay →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -426,6 +441,28 @@
   </footer>
 
   <script>
+    // Parallax header
+    const headerBg = document.getElementById('header-bg');
+    window.addEventListener('scroll', () => {
+      if (headerBg) {
+        headerBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+      }
+    }, { passive: true });
+
+    // Timeline: línea progresa al hacer scroll
+    const bioLineas = document.querySelectorAll('.bio-linea-progress');
+    const bioBloques = document.querySelectorAll('.bio-bloque');
+    const timelineObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          const linea = e.target.querySelector('.bio-linea-progress');
+          if (linea) setTimeout(() => { linea.style.height = '100%'; }, 200);
+        }
+      });
+    }, { threshold: 0.2 });
+    bioBloques.forEach(b => timelineObs.observe(b));
+
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const burgerIcon = `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
