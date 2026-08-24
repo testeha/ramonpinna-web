@@ -152,19 +152,19 @@
     .role-card {
       padding: 40px 20px;
       position: relative;
-      background: var(--blanco);
+      background: transparent;
       transition: background .2s;
     }
-    .role-card:hover { background: var(--fondo); }
+    .role-card:hover { opacity: .85; }
     /* Separador vertical que no ocupa todo el alto */
     .role-card:not(:last-child)::after {
       content: '';
       position: absolute; right: 0; top: 28px; bottom: 28px;
-      width: 1px; background: var(--linea);
+      width: 1px; background: rgba(255,255,255,.28);
     }
-    .role-icon { color: var(--azul); margin-bottom: 24px; opacity: .65; }
-    .role-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--azul); margin-bottom: 12px; line-height: 1.3; }
-    .role-desc { font-size: 14px; color: var(--texto-sec); line-height: 1.7; }
+    .role-icon { color: #C79A63; margin-bottom: 22px; opacity: 1; }
+    .role-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: #FFFFFF; margin-bottom: 12px; line-height: 1.3; }
+    .role-desc { font-size: 14px; color: rgba(255,255,255,.72); line-height: 1.7; }
 
     /* ── SOBRE MÍ ── */
     .sobre-grid {
@@ -551,7 +551,7 @@
 
   <!-- ── ROLES ── -->
   <section style="background: var(--blanco);">
-    <div class="roles-wrap" style="max-width: var(--max); margin: 0 auto; padding: 0 80px;">
+    <div class="roles-wrap" style="max-width: var(--max); margin: 0 auto; padding: 55px 80px; background: #0F233A;">
       <div class="roles-grid fade-in">
         <div class="role-card">
           <div class="role-icon">
