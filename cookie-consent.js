@@ -29,7 +29,7 @@
   bar.innerHTML =
     '<div class="cookie-consent-text">' +
       "Usamos cookies de análisis para entender cómo se usa esta web. Puedes aceptarlas o rechazarlas — no se activará ninguna hasta que elijas. Más información en la " +
-            '<a href="#">política de cookies</a>.' +
+            '<a href="politica-cookies.html">política de cookies</a>.' +
             "</div>" +
     '<div class="cookie-consent-actions">' +
       '<button id="cookie-reject" type="button">Rechazar</button>' +
