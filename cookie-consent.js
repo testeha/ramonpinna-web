@@ -1,4 +1,3 @@
-@'
 (function () {
   var CONSENT_KEY = "rp_cookie_consent";
   var GA_ID = "G-YF7EFK0R80";
@@ -75,4 +74,3 @@
     bar.remove();
   });
 })();
-'@ | Set-Content -Path cookie-consent.js -Encoding UTF8
