@@ -28,8 +28,9 @@
   bar.id = "cookie-consent-bar";
   bar.innerHTML =
     '<div class="cookie-consent-text">' +
-      "Usamos cookies propias y de análisis (Google Analytics) para entender cómo se usa esta web. Puedes aceptarlas o rechazarlas." +
-    "</div>" +
+      "Usamos cookies de análisis para entender cómo se usa esta web. Puedes aceptarlas o rechazarlas — no se activará ninguna hasta que elijas. Más información en la " +
+            '<a href="#">política de cookies</a>.' +
+            "</div>" +
     '<div class="cookie-consent-actions">' +
       '<button id="cookie-reject" type="button">Rechazar</button>' +
       '<button id="cookie-accept" type="button">Aceptar</button>' +
@@ -47,6 +48,7 @@
       "box-shadow: 0 -2px 12px rgba(0,0,0,.15);" +
     "}" +
     "#cookie-consent-bar .cookie-consent-text { max-width: 720px; opacity: .9; }" +
+    "#cookie-consent-bar .cookie-consent-text a { color: #C79A63; text-decoration: underline; }" +
     "#cookie-consent-bar .cookie-consent-actions { display: flex; gap: 12px; flex-shrink: 0; }" +
     "#cookie-consent-bar button {" +
       "font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;" +
